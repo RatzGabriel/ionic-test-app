@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>camera</ion-title>
+    <ion-back-button defaultHref="/home"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tab-button expand="block" (click)="getPhoto()">
+    <ion-icon name="camera"></ion-icon>
+    <ion-label>Photo</ion-label>
+  </ion-tab-button>
+  <img *ngIf="selectImage" [src]="selectImage?.webPath" />
+</ion-content>
