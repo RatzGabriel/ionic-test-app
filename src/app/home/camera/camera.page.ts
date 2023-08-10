@@ -23,6 +23,7 @@ export class CameraPage implements OnInit {
 
   async getPhoto() {
     await Camera.requestPermissions();
+    
     const image = await Camera.getPhoto({
       quality: 90,
       //allowEditing: true,
