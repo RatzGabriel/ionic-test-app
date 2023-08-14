@@ -4,34 +4,48 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-row>
-    <ion-col size="6">
-      <ion-card color="primary" routerLink="/home/network">
-        <ion-card-header class="ion-text-center">Network</ion-card-header>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card color="primary" (click)="share()">
-        <ion-card-header class="ion-text-center">Share</ion-card-header>
-      </ion-card>
-    </ion-col>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card routerLink="/home/network">
+          <ion-card-header class="ion-text-center">
+            <ion-item detail="true">
+              <ion-label>
+                <p class="ion-text-wrap ion-text-center">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Iusto ratione quisquam alias, reiciendis commodi odit, ipsum
+                  et labore fuga velit porro corporis facere dolore expedita
+                  unde modi laborum illo magni.
+                </p>
+              </ion-label>
+              <ion-note slot="end">Note</ion-note>
+            </ion-item>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card color="primary" (click)="share()">
+          <ion-card-header class="ion-text-center">Share</ion-card-header>
+        </ion-card>
+      </ion-col>
 
-    <ion-col size="6">
-      <ion-card color="primary" routerLink="/home/camera">
-        <ion-card-header class="ion-text-center">Camera</ion-card-header>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card color="primary" routerLink="/home/contacts">
-        <ion-card-header class="ion-text-center">Contacts</ion-card-header>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card color="primary" routerLink="/home/local-notifications">
-        <ion-card-header class="ion-text-center"
-          >local-notifications</ion-card-header
-        >
-      </ion-card>
-    </ion-col>
-  </ion-row>
+      <ion-col size="6">
+        <ion-card color="primary" routerLink="/home/camera">
+          <ion-card-header class="ion-text-center">Camera</ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card color="primary" routerLink="/home/contacts">
+          <ion-card-header class="ion-text-center">Contacts</ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card color="primary" routerLink="/home/local-notifications">
+          <ion-card-header class="ion-text-center"
+            >local-notifications</ion-card-header
+          >
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
