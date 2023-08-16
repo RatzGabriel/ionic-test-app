@@ -9,6 +9,7 @@ import { Camera, CameraResultType } from '@capacitor/camera';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  type = 'native';
   constructor() {}
 
   themeToggle = false;
@@ -41,5 +42,10 @@ export class HomePage {
       url: 'http://ionicframework.com/',
       dialogTitle: 'Share with buddies',
     });
+  }
+
+  segmentChanged(event: any) {
+    console.log(event.detail.value);
+    this.type = event.detail.value;
   }
 }

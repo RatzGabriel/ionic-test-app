@@ -1,24 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Native Plugins </ion-title>
+    <ion-title> Ionic Features </ion-title>
   </ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="type">
+    <ion-segment-button value="components">
+      <ion-label>components</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="native">
+      <ion-label>native</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngIf="type === 'native'">
     <ion-row>
       <ion-col size="12">
-        <ion-card routerLink="/home/network">
-          <ion-card-header class="ion-text-center">
-            <ion-item detail="true">
-              <ion-label>
-                <p class="ion-text-wrap ion-text-center">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Iusto ratione quisquam alias, reiciendis commodi odit, ipsum
-                  et labore fuga velit porro corporis facere dolore expedita
-                  unde modi laborum illo magni.
-                </p>
+        <ion-card>
+          <ion-card-header>
+            <ion-item color="primary" detail="true">
+              <ion-label position="floating">
+                <p>No text</p>
+                <ion-text>Ion Text</ion-text>
               </ion-label>
-              <ion-note slot="end">Note</ion-note>
+              <ion-input></ion-input>
             </ion-item>
           </ion-card-header>
         </ion-card>
@@ -48,4 +52,41 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-list *ngIf="type === 'components'">
+    <ion-item-sliding>
+      <ion-item>
+        <ion-label>Sliding Item with End Options</ion-label>
+      </ion-item>
+
+      <ion-item-options>
+        <ion-item-option>Favorite</ion-item-option>
+        <ion-item-option color="danger">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item-options side="start">
+        <ion-item-option color="success">Archive</ion-item-option>
+      </ion-item-options>
+
+      <ion-item>
+        <ion-label>Sliding Item with Start Options</ion-label>
+      </ion-item>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item-options side="start">
+        <ion-item-option color="success">Archive</ion-item-option>
+      </ion-item-options>
+
+      <ion-item>
+        <ion-label>Sliding Item with Options on Both Sides</ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option>Favorite</ion-item-option>
+        <ion-item-option color="danger">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
