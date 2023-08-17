@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Contacts } from '@capacitor-community/contacts';
+import { ActionSheetController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-contacts',
@@ -10,10 +11,20 @@ export class ContactsPage implements OnInit {
   contacts: any[] = [];
   allContacts: any[] = [];
   page = 1;
-
-  constructor() {}
+  loading: any;
+  isLoading: any;
+  constructor(
+    private loadingCtrl: LoadingController,
+    public actionSheetCtrl: ActionSheetController
+  ) {}
 
   ngOnInit() {
+    this.isLoading = true;
+    this.showLoading();
+    setTimeout(() => {
+      this.isLoading = false;
+      this.loading.dismiss();
+    }, 3000);
     // this.getContacts();
     this.allContacts = [
       {
@@ -215,8 +226,6 @@ export class ContactsPage implements OnInit {
     }
   }
 
-
-
   info(contact: any) {
     console.log(contact);
   }
@@ -229,5 +238,56 @@ export class ContactsPage implements OnInit {
     );
     this.contacts = this.contacts.concat(temp);
     event.target.complete();
+  }
+
+  async showLoading() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Dismissing after 2 seconds...',
+      duration: 2000,
+      backdropDismiss: true,
+    });
+    console.log(this.loading);
+
+    this.loading.present();
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Actions',
+      buttons: [
+        {
+          text: 'Call',
+          role: 'destructive',
+          icon: 'call',
+          data: {
+            action: 'call',
+          },
+        },
+        {
+          text: 'Share',
+          data: {
+            action: 'share',
+          },
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          data: {
+            action: 'cancel',
+          },
+        },
+      ],
+    });
+
+    await actionSheet.present();
+  }
+
+  handleRefresh(event: any) {
+    console.log('refresh data', event);
+    this.contacts = [];
+    this.ngOnInit();
+    setTimeout(() => {
+      event.target.complete();
+    }, 3000);
   }
 }
